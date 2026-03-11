@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Auth;
 class ArticleController extends Controller
 {
     public function articleUser($user) {
-
+        return Article::where('user_id', $user)->with('user')->get();
     }
     public function articleOne($article)
     {
