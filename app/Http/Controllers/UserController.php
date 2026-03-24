@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Http\Requests\StoreUserRequest;
 use App\Http\Requests\UpdateUserRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -32,6 +33,11 @@ class UserController extends Controller
     {
         $request->user()->currentAccessToken()->delete();
         return response()->json(['massage' => 'выход выполнен']);
+    }
+
+    public function user()
+    {
+        return response()->json(Auth::user());
     }
 
     /**
